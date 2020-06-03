@@ -6,18 +6,41 @@
 
 
 
-// array vuoto
-var bombe = [];
-
 // con un ciclo for di 16 iterazioni creo l'array con le bombe
-for (i = 0; i < 16; i++) {
-    // generiamo un numero casuale
-    var numero = getRndInteger(1, 100);
+function generaBombe() {
+    // array vuoto
+    var bombe = [];
 
-    bombe.push(numero);
+    for (i = 1; i < 17; i++) {
+        // generiamo un numero casuale
+        var numero = getRndInteger(1, 100);
+    
+        bombe.push(numero);
+    }
+
+    return bombe;  
 }
 
-console.log(bombe);
+var bombeArray = generaBombe();
+console.log(bombeArray);
+
+
+// chiedo all'utente di inserire un numero
+var y = 1;
+var bombaTrovata = false;
+while(y <= 10 && bombaTrovata === false) {
+
+    var numeroUtente = parseInt(prompt('inserisci un numero'));
+    console.log(numeroUtente);
+    var verificaBomba = bombeArray.includes(numeroUtente);
+
+    if(verificaBomba) {
+        bombaTrovata === true;
+        alert('sei saltato in aria!');
+    }
+    y++
+}
+
 
 
 
