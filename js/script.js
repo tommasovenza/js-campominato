@@ -6,8 +6,6 @@
 
 
 
-
-
 var bombeArray = generaBombe();
 console.log(bombeArray);
 
