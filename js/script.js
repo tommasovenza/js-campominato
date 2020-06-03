@@ -13,7 +13,7 @@ console.log(bombeArray);
 // chiedo all'utente di inserire un numero
 var i = 1;
 var bombaTrovata = false;
-while((i <= 10) && (bombaTrovata == false)) {
+while((i <= 84) && (bombaTrovata == false)) {
 
     var numeroUtente = parseInt(prompt('inserisci un numero'));
     console.log(numeroUtente);
