@@ -4,8 +4,6 @@
 // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
-
-
 // richiamo la funzione che crea le bombe
 var bombeArray = generaBombe();
 console.log(bombeArray);
@@ -27,9 +25,9 @@ while((i <= 84) && (bombaTrovata == false)) {
     if(verificaBomba) {
         bombaTrovata = true;
         alert('sei saltato in aria!');
-        punteggio = i;
-        alert('il tuo punteggio è ' + i);
-        console.log('il tuo punteggio è ' + i);
+        punteggio = (i - 1);
+        alert('il tuo punteggio è ' + punteggio);
+        console.log('il tuo punteggio è ' + punteggio );
     }
 
     i++;
