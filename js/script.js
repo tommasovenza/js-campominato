@@ -6,15 +6,19 @@
 
 
 
+// richiamo la funzione che crea le bombe
 var bombeArray = generaBombe();
 console.log(bombeArray);
 
 
-// chiedo all'utente di inserire un numero
+// ciclo while
 var i = 1;
 var bombaTrovata = false;
 while((i <= 84) && (bombaTrovata == false)) {
 
+    var punteggio;
+
+    // chiedo all'utente di inserire un numero
     var numeroUtente = parseInt(prompt('inserisci un numero'));
     console.log(numeroUtente);
 
@@ -23,12 +27,13 @@ while((i <= 84) && (bombaTrovata == false)) {
     if(verificaBomba) {
         bombaTrovata = true;
         alert('sei saltato in aria!');
+        punteggio = i;
+        alert('il tuo punteggio è ' + i);
+        console.log('il tuo punteggio è ' + i);
     }
-    
 
     i++;
 }
-
 
 
 // con un ciclo for di 16 iterazioni creo l'array con le bombe
