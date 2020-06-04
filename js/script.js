@@ -9,15 +9,19 @@
 // Raccomandazione: andato avanti come sempre un pezzettino alla volta, diamo a variabili e
 // funzioni nomi che riflettano il proprio ruolo e prima di iniziare facciamo l’analisi e scriviamo i punti importanti!
 
+ 
+// impostazione difficoltà
+
+// definisco le variabili che mi aiuteranno ad impostare il gioco e la sua difficoltà
+var livello = parseInt(prompt('inserisci un numero per impostare la difficoltà, 0 = facile, 1 = medio, 2 = difficile'));
+
 
 // variabili che impostano il gioco
-var rangeMaxNumeri = 100;
+var rangeMaxNumeri = calcolaRangeMassimoDiNumeri(livello);
 var numeroBombe = 16;
 var numeroTentativiRimasti = rangeMaxNumeri - numeroBombe;
 
 console.log(numeroTentativiRimasti);
-
-
 
 
 // l'array bombe creato con la funzione
@@ -25,46 +29,29 @@ var bombe = creaBombe(rangeMaxNumeri, numeroBombe);
 console.log(bombe);
 
 
-
-// impostazione difficoltà
-
-// definisco le variabili che mi aiuteranno ad impostare il gioco e la sua difficoltà
-
-// var difficoltà = parseInt(prompt('inserisci un numero per impostare la difficolta, 0 = facile, 1 = medio, 2 = difficile'));
-
-// if (difficoltà == 1) {
-//     rangeMaxNumeri = 80;
-// } else if (difficoltà == 2) {
-//     rangeMaxNumeri = 50;
-// } else {
-//     rangeMaxNumeri = 100;
-// }
-
 // il FULCRO DEL PROGRAMMA
-var i = 0;
+var i = 1;
 var bombaTrovata = false;
-while (i < numeroTentativiRimasti && bombaTrovata == false) {
+while (i < numeroTentativiRimasti && bombaTrovata === false) {
 
     // var che definisce il numero che inserirà l'utente
-    var numeroUtente = parseInt(prompt('inserisci un numero compreso tra 1 e 100'));
-
-    var bomba = bombe.includes(numeroUtente);
+    var numeroUtente = parseInt(prompt('inserisci un numero compreso tra 1 e ' + rangeMaxNumeri));
+    console.log(numeroUtente);
+ 
+    // var bomba = bombe.includes(numeroUtente);
 
     var punteggio = i;
 
-    if (bomba) {
+    if (seElementoInArray(numeroUtente, bombe) === true) {
         alert('sei saltato in aria');
         bombaTrovata = true;
-        alert('il tuo punteggio è ' + punteggio);
+        alert('il tuo punteggio è ' + (punteggio - 1));
+        console.log('il tuo punteggio è ' + (punteggio -1));
     }
 
-
-
+  
     i++;
 }
-
-
-
 
 // FUNZIONI
 // creo una funzione che controlli che il numero inserito nel gioco non si ripeta
@@ -90,6 +77,7 @@ function creaBombe(rangeMaxNumeri, numeroBombe) {
     return arrayBombe;
 }
 
+ 
 
 // la funzione controlla se i numeri inseriti non sono già presenti, e nel caso, permette il push nell'array, in modo da creare un array senza doppioni
 
@@ -112,4 +100,24 @@ function seElementoInArray(elemento, arrayDaVerificare) {
     }
 
     return numeroInArray;
+}
+
+
+// accetta un livelli di difficoltà e restituisce il range massimo di numeri
+// --> livello: numero intero da 0 a 2 che rappresenta il livello di difficoltà
+// la funzione ritorna un numero intero che rappresenta il range massimo dei numeri del gioco
+
+function calcolaRangeMassimoDiNumeri(livello) {
+
+    var numeroRange;
+
+    if (livello == 1) {
+        numeroRange = 80;
+    } else if (livello == 2) {
+        numeroRange = 50;
+    } else  {
+        numeroRange = 100;
+    }
+
+    return numeroRange;
 }
